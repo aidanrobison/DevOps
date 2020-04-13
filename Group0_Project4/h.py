@@ -22,15 +22,14 @@ def md5_str(str_val):
 
 @app.route('/factorial/<int:num>')
 def factorial(num):
-    fac = num
-    if fac == 0:
+    if num == 0:
         return 1
     else:
-        return fac *factorial(fac-1)
-    fac_as_string = (fac)
+        return str(int(num *factorial(num-1)))
+    
     output = {
         "input": num,
-        "output": fac_as_string
+        "output": factorial(num)
     }
     return json.dumps(output)
 
@@ -40,13 +39,13 @@ def fibo(fib):
     if fib<=1:
         return fib
     else:
-        return(fibo(fib-1)+fibo(fib-2))
+        return fibo(fib-1)+fibo(fib-2)
     for i in range(nterms):
-        fibo(i)   
+        fibo(i)  
 
     output = {
         "input": fib,
-        "output": str(fibo)
+        "output": fibo
     }
     return json.dumps(output)
 
@@ -63,7 +62,7 @@ def prime(p):
         return True
     output = {
         "input": p,
-        "output": str(prime(p))
+        "output": prime(p)
     }
     return json.dumps(output)
 
